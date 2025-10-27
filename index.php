@@ -22,7 +22,7 @@ if (isset($_GET['msg'])) {
     <div class="container mt-5">
         <h1 class="mb-4">Items de Terraria</h1>
         
-        <a href="crear.php" class="btn btn-success mb-3">
+        <a href="crear_y_editar.php" class="btn btn-success mb-3">
             Agregar Nuevo Item
         </a>
 
@@ -52,7 +52,7 @@ if (isset($_GET['msg'])) {
                             <td><?php echo $fila['dano']; ?></td>
                             <td>$<?php echo $fila['valor_venta']; ?></td>
                             <td>
-                                <a href="crear.php?id=<?php echo $fila['id']; ?>" class="btn btn-sm btn-primary">Editar</a>
+                                <a href="crear_y_editar.php?id=<?php echo $fila['id']; ?>" class="btn btn-sm btn-primary">Editar</a>
                                 <a href="borrar.php?id=<?php echo $fila['id']; ?>" 
                                    class="btn btn-sm btn-danger" 
                                    onclick="return confirm('¿Confirma la eliminación?');">Borrar</a>
