@@ -1,0 +1,14 @@
+ .boton{
+    background-color: rgb(117, 18, 93);
+    color: rgb(255, 255, 255);
+    border-color: rgb(56, 11, 41) 4px;
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    right: 600px; ;
+    position: absolute;
+    top: 300px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ }
