@@ -1,6 +1,13 @@
 <?php
+<<<<<<< HEAD
 include 'bd.php';
 $accion = 'Crear'; 
+=======
+include '../bd.php';
+$item = []; 
+$accion = 'Crear'; 
+$id = 0; 
+>>>>>>> 52c58a65de5a50d2d17784cc6ddf958417132456
 
 $conexion = conectarBD();
 
@@ -11,18 +18,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dano = (int)$_POST['dano'];
     $descripcion = trim($_POST['descripcion']);
     $valor_venta = (float)$_POST['valor_venta'];
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 52c58a65de5a50d2d17784cc6ddf958417132456
     $query = "INSERT INTO items_terraria (nombre, tipo, rareza, dano, descripcion, valor_venta) 
               VALUES ($1, $2, $3, $4, $5, $6)";
     $datos = array($nombre, $tipo, $rareza, $dano, $descripcion, $valor_venta);
 
     if (seleccionar($conexion, $query, $datos)) {
         pg_close($conexion);
+<<<<<<< HEAD
         header("Location: index.php?msg=ok"); 
         exit;
     } else {
         pg_close($conexion);
         header("Location: index.php?msg=err");
+=======
+        header("Location: ../index.php?msg=ok"); 
+        exit;
+    } else {
+        pg_close($conexion);
+        header("Location: ../index.php?msg=err");
+>>>>>>> 52c58a65de5a50d2d17784cc6ddf958417132456
         exit;
     }
 }
@@ -34,6 +53,7 @@ pg_close($conexion);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title><?php echo $accion; ?> Ítem</title>
     <link href="public/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -41,38 +61,73 @@ pg_close($conexion);
     <div class="container mt-5">
         <h1 class="mb-4"><?php echo $accion; ?> Nuevo Ítem</h1>
         <a href="index.php" class="btn btn-secondary mb-3">← Volver</a>
+=======
+    <title><?php echo $accion; ?> Item</title>
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4"><?php echo $accion; ?> Item</h1>
+        <a href="../index.php" class="btn btn-secondary mb-3">← Volver</a>
+>>>>>>> 52c58a65de5a50d2d17784cc6ddf958417132456
         
         <form action="crear.php" method="POST">
             
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
+<<<<<<< HEAD
                     <input type="text" class="form-control" id="nombre" name="nombre" required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="tipo" class="form-label">Tipo</label>
                     <input type="text" class="form-control" id="tipo" name="tipo" required>
+=======
+                    <input type="text" class="form-control" id="nombre" name="nombre" required
+                           value="<?php echo htmlspecialchars($item['nombre'] ?? ''); ?>">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="tipo" class="form-label">Tipo</label>
+                    <input type="text" class="form-control" id="tipo" name="tipo" required
+                           value="<?php echo htmlspecialchars($item['tipo'] ?? ''); ?>">
+>>>>>>> 52c58a65de5a50d2d17784cc6ddf958417132456
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="rareza" class="form-label">Rareza (0-11)</label>
+<<<<<<< HEAD
                     <input type="number" class="form-control" id="rareza" name="rareza" required min="0" max="11" value="0">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="dano" class="form-label">Daño</label>
                     <input type="number" class="form-control" id="dano" name="dano" min="0" value="0">
+=======
+                    <input type="number" class="form-control" id="rareza" name="rareza" required min="0" max="11"
+                           value="<?php echo htmlspecialchars($item['rareza'] ?? '0'); ?>">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="dano" class="form-label">Daño</label>
+                    <input type="number" class="form-control" id="dano" name="dano" min="0"
+                           value="<?php echo htmlspecialchars($item['dano'] ?? '0'); ?>">
+>>>>>>> 52c58a65de5a50d2d17784cc6ddf958417132456
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="valor_venta" class="form-label">Valor Venta</label>
+<<<<<<< HEAD
                 <input type="number" class="form-control" id="valor_venta" name="valor_venta" step="0.01" min="0" value="0.00">
+=======
+                <input type="number" class="form-control" id="valor_venta" name="valor_venta" step="0.01" min="0"
+                       value="<?php echo htmlspecialchars($item['valor_venta'] ?? '0.00'); ?>">
+>>>>>>> 52c58a65de5a50d2d17784cc6ddf958417132456
             </div>
 
             <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
+<<<<<<< HEAD
                 <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
             </div>
             
@@ -80,5 +135,16 @@ pg_close($conexion);
         </form>
     </div>
     <script src="public/js/bootstrap.bundle.min.js"></script>
+=======
+                <textarea class="form-control" id="descripcion" name="descripcion" rows="3">
+                    <?php echo htmlspecialchars($item['descripcion'] ?? ''); ?>
+                </textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary"><?php echo $accion; ?> Item</button>
+        </form>
+    </div>
+    <script src="../public/js/bootstrap.bundle.min.js"></script>
+>>>>>>> 52c58a65de5a50d2d17784cc6ddf958417132456
 </body>
 </html>
