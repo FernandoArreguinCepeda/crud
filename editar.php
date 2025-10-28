@@ -56,12 +56,12 @@ pg_close($conexion);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $accion; ?> Item</title>
+    <title><?php echo $accion; ?> Ítem</title>
     <link href="public/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4"><?php echo $accion; ?> Item: <?php echo htmlspecialchars($item['nombre']); ?></h1>
+        <h1 class="mb-4"><?php echo $accion; ?> Ítem: <?php echo htmlspecialchars($item['nombre']); ?></h1>
         <a href="index.php" class="btn btn-secondary mb-3">← Volver a la lista</a>
         
         <form action="editar.php?id=<?php echo $id; ?>" method="POST">

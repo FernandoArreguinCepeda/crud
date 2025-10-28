@@ -14,24 +14,17 @@ if (isset($_GET['msg'])) {
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<<<<<<< HEAD
     <meta charset="UTF-8">
-=======
->>>>>>> 52c58a65de5a50d2d17784cc6ddf958417132456
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD Terraria</title>
     <link href="public/css/bootstrap.min.css" rel="stylesheet"> 
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Items de Terraria</h1>
+        <h1 class="mb-4">Ítems de Terraria</h1>
         
-<<<<<<< HEAD
         <a href="crear.php" class="btn btn-success mb-3">
-=======
-        <a href="crear_y_editar.php" class="btn btn-success mb-3">
->>>>>>> 52c58a65de5a50d2d17784cc6ddf958417132456
-            Agregar Nuevo Item
+            Agregar Nuevo Ítem
         </a>
 
         <?php echo $mensaje; ?>
@@ -60,11 +53,7 @@ if (isset($_GET['msg'])) {
                             <td><?php echo $fila['dano']; ?></td>
                             <td>$<?php echo $fila['valor_venta']; ?></td>
                             <td>
-<<<<<<< HEAD
                                 <a href="editar.php?id=<?php echo $fila['id']; ?>" class="btn btn-sm btn-primary">Editar</a>
-=======
-                                <a href="crear_y_editar.php?id=<?php echo $fila['id']; ?>" class="btn btn-sm btn-primary">Editar</a>
->>>>>>> 52c58a65de5a50d2d17784cc6ddf958417132456
                                 <a href="borrar.php?id=<?php echo $fila['id']; ?>" 
                                    class="btn btn-sm btn-danger" 
                                    onclick="return confirm('¿Confirma la eliminación?');">Borrar</a>
@@ -75,7 +64,7 @@ if (isset($_GET['msg'])) {
                 </table>
             </div>
         <?php else: ?>
-            <div class="alert alert-info">No hay items registrados.</div>
+            <div class="alert alert-info">No hay ítems registrados.</div>
         <?php endif; ?>
     </div>
     <script src="public/js/bootstrap.bundle.min.js"></script>
