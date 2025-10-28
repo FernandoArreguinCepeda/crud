@@ -56,7 +56,7 @@ if (isset($_GET['msg'])) {
                                 <a href="editar.php?id=<?php echo $fila['id']; ?>" class="btn btn-sm btn-primary">Editar</a>
                                 <a href="borrar.php?id=<?php echo $fila['id']; ?>" 
                                    class="btn btn-sm btn-danger" 
-                                   onclick="return confirm('¿Confirma la eliminación?');">Borrar</a>
+                                   onclick="return confirm('¿Confirma la eliminación del ítem: <?php echo htmlspecialchars($fila['nombre']); ?>?');">Borrar</a>
                             </td>
                         </tr>
                         <?php endwhile; ?>
@@ -67,6 +67,8 @@ if (isset($_GET['msg'])) {
             <div class="alert alert-info">No hay ítems registrados.</div>
         <?php endif; ?>
     </div>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="public/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

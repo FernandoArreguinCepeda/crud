@@ -10,7 +10,11 @@ if ($id > 0) {
     $datos = array($id);
 
     if (seleccionar($conexion, $query, $datos)) {
-        $msg = 'ok'; 
+        if (pg_affected_rows(pg_last_result($conexion)) > 0) {
+            $msg = 'ok'; 
+        } else {
+            $msg = 'err';
+        }
     } else {
         $msg = 'err';
     }

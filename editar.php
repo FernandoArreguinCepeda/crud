@@ -1,5 +1,5 @@
 <?php
-include 'bd.php';
+include '../bd.php';
 $item = []; 
 $accion = 'Actualizar'; 
 
@@ -23,11 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (seleccionar($conexion, $query, $datos)) {
         pg_close($conexion);
-        header("Location: index.php?msg=ok"); 
+        header("Location: ../index.php?msg=ok"); 
         exit;
     } else {
         pg_close($conexion);
-        header("Location: index.php?msg=err");
+        header("Location: ../index.php?msg=err");
         exit;
     }
 }
@@ -40,12 +40,11 @@ if ($id > 0) {
         $item = pg_fetch_assoc($resultado);
     } else {
         pg_close($conexion);
-        header("Location: index.php?msg=err");
+        header("Location: ../index.php?msg=err");
         exit;
     }
 } else {
-    pg_close($conexion);
-    header("Location: crear.php");
+    header("Location: ../index.php?msg=err");
     exit;
 }
 
@@ -57,12 +56,12 @@ pg_close($conexion);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $accion; ?> Ítem</title>
-    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4"><?php echo $accion; ?> Ítem: <?php echo htmlspecialchars($item['nombre']); ?></h1>
-        <a href="index.php" class="btn btn-secondary mb-3">← Volver a la lista</a>
+        <h1 class="mb-4"><?php echo $accion; ?> Ítem</h1>
+        <a href="../index.php" class="btn btn-secondary mb-3">← Volver</a>
         
         <form action="editar.php?id=<?php echo $id; ?>" method="POST">
             
@@ -72,12 +71,12 @@ pg_close($conexion);
                 <div class="col-md-6 mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" required
-                           value="<?php echo htmlspecialchars($item['nombre']); ?>">
+                           value="<?php echo htmlspecialchars($item['nombre'] ?? ''); ?>">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="tipo" class="form-label">Tipo</label>
                     <input type="text" class="form-control" id="tipo" name="tipo" required
-                           value="<?php echo htmlspecialchars($item['tipo']); ?>">
+                           value="<?php echo htmlspecialchars($item['tipo'] ?? ''); ?>">
                 </div>
             </div>
             
@@ -85,29 +84,31 @@ pg_close($conexion);
                 <div class="col-md-6 mb-3">
                     <label for="rareza" class="form-label">Rareza (0-11)</label>
                     <input type="number" class="form-control" id="rareza" name="rareza" required min="0" max="11"
-                           value="<?php echo htmlspecialchars($item['rareza']); ?>">
+                           value="<?php echo htmlspecialchars($item['rareza'] ?? '0'); ?>">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="dano" class="form-label">Daño</label>
                     <input type="number" class="form-control" id="dano" name="dano" min="0"
-                           value="<?php echo htmlspecialchars($item['dano']); ?>">
+                           value="<?php echo htmlspecialchars($item['dano'] ?? '0'); ?>">
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="valor_venta" class="form-label">Valor Venta</label>
                 <input type="number" class="form-control" id="valor_venta" name="valor_venta" step="0.01" min="0"
-                       value="<?php echo htmlspecialchars($item['valor_venta']); ?>">
+                       value="<?php echo htmlspecialchars($item['valor_venta'] ?? '0.00'); ?>">
             </div>
 
             <div class="mb-3">
                 <label for="descripcion" class="form-label">Descripción</label>
-                <textarea class="form-control" id="descripcion" name="descripcion" rows="3"><?php echo htmlspecialchars($item['descripcion']); ?></textarea>
+                <textarea class="form-control" id="descripcion" name="descripcion" rows="3">
+                    <?php echo htmlspecialchars($item['descripcion'] ?? ''); ?>
+                </textarea>
             </div>
             
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary"><?php echo $accion; ?> Ítem</button>
         </form>
     </div>
-    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="../public/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
