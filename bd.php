@@ -8,15 +8,12 @@ function conectarBD() {
 
     $conn_string = "host=$host port=5432 dbname=$dbname user=$user password=$password";
     
-
     $conexion = @pg_connect($conn_string); 
 
     if (!$conexion) {
-        exit("Error de conexión: " . pg_last_error());
+
+        exit("Error de conexión a la base de datos. Host: " . $host);
     }
     return $conexion;
-}
-function seleccionar($conexion, $query, $datos) {
-    return pg_query_params($conexion, $query, $datos);
 }
 ?>
