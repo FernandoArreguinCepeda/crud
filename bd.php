@@ -1,10 +1,10 @@
 <?php
 function conectarBD() {
 
-    $host = getenv('DB_HOST') ?: 'db_name_o_ip';
-    $dbname = getenv('DB_NAME') ?: 'ItemTerraria';
-    $user = getenv('DB_USER') ?: 'postgres';
-    $password = getenv('DB_PASSWORD') ?: '9894';
+    $host = getenv('DB_HOST');
+    $dbname = getenv('DB_NAME');
+    $user = getenv('DB_USER');
+    $password = getenv('DB_PASSWORD');
 
     $conn_string = "host=$host port=5432 dbname=$dbname user=$user password=$password";
     
