@@ -9,8 +9,11 @@ if ($id > 0) {
     $query = "DELETE FROM items_terraria WHERE id = $1";
     $datos = array($id);
 
-    if (seleccionar($conexion, $query, $datos)) {
-        if (pg_affected_rows(pg_last_result($conexion)) > 0) {
+    $resultado = seleccionar($conexion, $query, $datos); 
+
+    if ($resultado !== false) { 
+
+        if (pg_affected_rows($resultado) > 0) {
             $msg = 'ok'; 
         } else {
             $msg = 'err';
